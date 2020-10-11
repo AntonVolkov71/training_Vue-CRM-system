@@ -56,24 +56,24 @@
 
       <div class="input-field">
         <input
-        id="name"
-        type="text"
-        v-model.trim="name"
-        :class='{
-          invalid: $v.name.$dirty && !$v.name.required
-        }'
+          id="name"
+          type="text"
+          v-model.trim="name"
+          :class="{
+            invalid: $v.name.$dirty && !$v.name.required,
+          }"
         />
         <label for="name">Имя</label>
         <small
-        class="helper-text invalid"
-        v-if="$v.name.$dirty && !$v.name.required"
+          class="helper-text invalid"
+          v-if="$v.name.$dirty && !$v.name.required"
         >
-        Введите ваше имя
+          Введите ваше имя
         </small>
       </div>
       <p>
         <label>
-          <input type="checkbox" v-model='agree'/>
+          <input type="checkbox" v-model="agree" />
           <span>С правилами согласен</span>
         </label>
       </p>
@@ -111,19 +111,21 @@ export default {
     agree: { checked: (v) => v },
   },
   methods: {
-    submitHandler() {
+    async submitHandler() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
       const formData = {
         email: this.email,
-        pasword: this.password,
-        name: this.name
+        password: this.password,
+        name: this.name,
       };
-
-       console.log(formData);
-      this.$router.push("/");
+    
+      try {
+        await this.$store.dispatch("register", formData);
+        this.$router.push("/");
+      } catch (error) {}
     },
   },
 };

@@ -4,7 +4,9 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import dateFilter from '@/filters/date.filter';
-import messagePlugin from '@/utils/message.plugin'
+import messagePlugin from '@/utils/message.plugin';
+
+import Loader from '@/components/app/Loader.vue';
 import './registerServiceWorker';
 import 'materialize-css/dist/js/materialize.min';
 
@@ -17,6 +19,7 @@ Vue.config.productionTip = false;
 Vue.use(messagePlugin);
 Vue.use(Vuelidate);
 Vue.filter('date', dateFilter);
+Vue.component('Loader', Loader);
 
 const firebaseConfig = {
   apiKey: "AIzaSyAr3mA3gFcHdp8GmFY699r6PPog_9fxSUg",
@@ -30,8 +33,15 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount('#app');
+let app;
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: (h) => h(App),
+    }).$mount('#app');
+  }
+})
+
+
