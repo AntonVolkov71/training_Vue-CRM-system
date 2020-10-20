@@ -9,19 +9,18 @@
 <script>
 import EmptyLayout from "@/layouts/EmptyLayout.vue";
 import MainLayout from "@/layouts/MainLayout.vue";
-import LoadingLayout from "@/layouts/LoadingLayout.vue";
 
 export default {
   computed: {
     layout() {
-      const { layout = "loading" } = this.$route.meta;
+      const { layout = "empty" } = this.$route.meta;
       return `${layout}-layout`;
     },
   },
   components: {
     EmptyLayout,
     MainLayout,
-    LoadingLayout,
+
   },
 };
 </script>
