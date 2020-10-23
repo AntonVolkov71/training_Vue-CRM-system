@@ -34,6 +34,11 @@ import currencyFilter from "@/filters/currency.filter";
 
 export default {
   name: "Planning",
+  metaInfo() {
+    return {
+      title: this.$title(`Menu_Planning`)
+    };
+  },
   data: () => ({
     categories: [],
     isLoading: true,

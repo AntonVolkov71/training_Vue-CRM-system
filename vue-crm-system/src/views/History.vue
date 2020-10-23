@@ -37,6 +37,11 @@ import paginationMixin from "@/mixins/pagination.mixin";
 import { Pie } from "vue-chartjs";
 export default {
   name: "History",
+  metaInfo() {
+    return {
+      title: this.$title(`Menu_History`)
+    };
+  },
   extends: Pie,
   mixins: [paginationMixin],
   data: () => ({
@@ -74,7 +79,7 @@ export default {
                 if(r.categoryId === c.id && r.type === "outcome"){
                   total += r.amount
                 }
-                return total 
+                return total
               },0)
             }),
             backgroundColor: [

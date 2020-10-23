@@ -98,6 +98,11 @@ import { email, required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "register",
+  metaInfo() {
+    return {
+      title: this.$title(`Register`)
+    };
+  },
   data: () => ({
     email: "",
     password: "",
@@ -121,7 +126,7 @@ export default {
         password: this.password,
         name: this.name,
       };
-    
+
       try {
         await this.$store.dispatch("register", formData);
         this.$router.push("/");
