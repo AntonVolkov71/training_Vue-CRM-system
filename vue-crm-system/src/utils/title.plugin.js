@@ -1,4 +1,4 @@
-import localizeFilter from "@/filters/localize.filter";
+import localizeFilter from "../filters/localize.filter";
 
 export default {
   install(Vue){

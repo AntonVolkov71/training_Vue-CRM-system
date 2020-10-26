@@ -14,7 +14,7 @@
      </ul>
 </template>
 <script>
-import localizeFilter from '@/filters/localize.filter'
+import localizeFilter from '../../filters/localize.filter'
 export default {
   props:['value'],
   data: () => ({

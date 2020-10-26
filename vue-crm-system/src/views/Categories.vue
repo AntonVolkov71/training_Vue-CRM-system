@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import CategoryCreate from "@/components/CategoryCreate";
+import CategoryCreate from "../components/CategoryCreate";
 import CategoryEdit from "../components/CategoryEdit";
 
 export default {

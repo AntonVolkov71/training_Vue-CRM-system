@@ -71,7 +71,8 @@
 </template>
 
 <script>
- import messages from "@/utils/messages.js";
+ import messages from "../utils/messages.js";
+import { email, required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "login",

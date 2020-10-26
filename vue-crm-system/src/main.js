@@ -4,14 +4,14 @@ import VueMeta from 'vue-meta'
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import dateFilter from '@/filters/date.filter';
-import currencyFilter from '@/filters/currency.filter';
-import localizeFilter from '@/filters/localize.filter';
-import tooltipDirecrtive from '@/direcrtives/tooltip.direcrtive'
-import messagePlugin from '@/utils/message.plugin';
-import titlePlugin from '@/utils/title.plugin';
+import dateFilter from './filters/date.filter';
+import currencyFilter from './filters/currency.filter';
+import localizeFilter from './filters/localize.filter';
+import tooltipDirecrtive from './direcrtives/tooltip.direcrtive'
+import messagePlugin from './utils/message.plugin';
+import titlePlugin from './utils/title.plugin';
 
-import Loader from '@/components/app/Loader.vue';
+import Loader from './components/app/Loader.vue';
 import Paginate from 'vuejs-paginate';
 
 import './registerServiceWorker';
