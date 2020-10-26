@@ -1,19 +1,19 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{ "Categories" | localize }}</h3>
     </div>
     <section>
       <Loader v-if="isLoading" />
       <div v-else class="row">
         <CategoryCreate @created="addNewCategory" />
         <CategoryEdit
-        v-if="categories.length"
+          v-if="categories.length"
           :categories="categories"
           @updated="updateCategories"
           :key="categories.length + updateCount"
         />
-        <p v-else class="center">Категорий пока нет</p>
+        <p v-else class="center">{{ "NoCategories" | localize }}</p>
       </div>
     </section>
   </div>
@@ -33,7 +33,7 @@ export default {
   data: () => ({
     categories: [],
     isLoading: true,
-    updateCount: 0,
+    updateCount: 0
   }),
   async mounted() {
     this.categories = await this.$store.dispatch("fetchCategories");
@@ -41,18 +41,18 @@ export default {
   },
   components: {
     CategoryCreate,
-    CategoryEdit,
+    CategoryEdit
   },
   methods: {
     addNewCategory(category) {
       this.categories.push(category);
     },
     updateCategories({ id, title, limit }) {
-      const idx = this.categories.findIndex((c) => c.id === id);
+      const idx = this.categories.findIndex(c => c.id === id);
       this.categories[idx].title = title;
       this.categories[idx].limit = limit;
       this.updateCount++;
-    },
-  },
+    }
+  }
 };
 </script>

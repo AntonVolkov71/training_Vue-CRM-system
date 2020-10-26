@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Счет</h3>
+      <h3>{{ "Bill" | localize }}</h3>
 
       <button class="btn waves-effect waves-light btn-small" @click="refresh">
         <i class="material-icons">refresh</i>
@@ -25,12 +25,12 @@ export default {
   name: "Home",
   metaInfo() {
     return {
-      title: this.$title(`Menu_Bill`),
+      title: this.$title(`Menu_Bill`)
     };
   },
   data: () => ({
     loading: true,
-    currency: null,
+    currency: null
   }),
   async mounted() {
     const currency = await this.$store.dispatch("fetchCurrency");
@@ -40,7 +40,7 @@ export default {
   },
   components: {
     HomeBill,
-    HomeCurrency,
+    HomeCurrency
   },
   methods: {
     fixCurrency(cur) {
@@ -48,7 +48,7 @@ export default {
       currency.rates = { EUR: 1 };
       currency.date = cur.date;
       this.base = cur.base;
-      Object.keys(cur.rates).forEach((el) => {
+      Object.keys(cur.rates).forEach(el => {
         if (el === "USD" || el === "RUB") {
           currency.rates[el] = cur.rates[el];
         }
@@ -60,7 +60,7 @@ export default {
       const currency = await this.$store.dispatch("fetchCurrency");
       this.currency = this.fixCurrency(currency);
       this.loading = false;
-    },
-  },
+    }
+  }
 };
 </script>
